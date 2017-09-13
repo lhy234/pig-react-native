@@ -24,9 +24,6 @@ export default class LoginScreen extends Component {
       return (
 
                   <View style={LoginStyles.loginview}>
-                    <Text>
-                      刘晓勇
-                    </Text>
                     <View style={{flexDirection: 'row',height:100,marginTop:1,
                        justifyContent: 'center',
                        alignItems: 'flex-start',}}>

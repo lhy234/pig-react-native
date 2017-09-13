@@ -1,5 +1,5 @@
 /**
- * Created by marno on 2017/4/9
+ * Created by braveliu on 2017/4/9
  * Function: 可点击的 Image 组件
  * Desc:
  */

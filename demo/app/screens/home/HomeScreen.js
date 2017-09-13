@@ -1,31 +1,19 @@
-/**
- * Created by braveliu on 2017/3/13
- * Function: 程序主入口
- * Desc: 在这里做一些全局配置，比如全局 Navigator配置，全局变量初始化等。
- */
 import React, {Component} from 'react';
-import {AppRegistry, View, StyleSheet, Text, Image, TouchableWithoutFeedback} from 'react-native';
+import {View, StyleSheet, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Toast from 'react-native-simple-toast';
 
-import {Colors, Images} from './resource/';
+import {Colors, Images} from '../../resource/';
 
-//import OFOScreen from './screens/ofo/OFOScreen';
-//import TwitterScreen from './screens/twitter/TwitterScreen';
-//import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
-//import WeChatScreen from "./screens/wechat/WeChatScreen";
-import DefaultScreen from "./screens/default/DefaultScreen";
-
-class HomeScreen extends Component {
+export default class HomeScreen extends Component {
     constructor(props) {
         super(props);
-
         this._navigateToScreen = this._navigateToScreen.bind(this);
     }
 
     render() {
         return (
-            <View style={styles.view_container}>
+            <View style={styles.view_container} onLayout={this._navigatorToLogin.bind(this)}>
                 <View style={styles.view_avatar_name_container}>
                     <View style={styles.view_avatar_container}>
                         <Image
@@ -38,40 +26,6 @@ class HomeScreen extends Component {
                     >braveliu</Text>
 
                 </View>
-
-                /*<TouchableWithoutFeedback onPress={this._navigateToWeChat.bind(this)}>
-                    <View>
-                        <Text
-                            style={[styles.text_item, {backgroundColor: Colors.green_00C853}]}
-
-                        >WeChat</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-
-
-                <TouchableWithoutFeedback onPress={this._navigateToTwitter.bind(this)}>
-                    <View>
-                        <Text
-                            style={[styles.text_item, {backgroundColor: Colors.red_E53935}]}
-                        >Twitter</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback onPress={this._navigateToQQBrowser.bind(this)}>
-                    <View>
-                        <Text
-                            style={[styles.text_item, {backgroundColor: Colors.blue_009688}]}
-                        >QQBrowser</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback onPress={this._navigateToOFO.bind(this)}>
-                    <View>
-                        <Text
-                            style={[styles.text_item, {backgroundColor: Colors.yellow_ffc962}]}
-                        >OFO</Text>
-                    </View>
-                </TouchableWithoutFeedback>*/
 
                 <TouchableWithoutFeedback onPress={this._navigatorToDefault.bind(this)}>
                     <View>
@@ -89,7 +43,7 @@ class HomeScreen extends Component {
                         color: '#3197ff',
                         textDecorationLine: 'underline'
                     }}
-                >http://www.marno.cn</Text>
+                >http://www.cnblogs.com/braveliuchina/</Text>
             </View>
         );
     }
@@ -100,7 +54,7 @@ class HomeScreen extends Component {
         navigate(screen);
     }
 
-   /* _navigateToOFO() {
+    /*_navigateToOFO() {
         this._navigateToScreen('OFO')
     }
 
@@ -118,7 +72,9 @@ class HomeScreen extends Component {
     _navigatorToDefault(){
         this._navigateToScreen('Default1')
     }
-
+    /*_navigatorToLogin(){
+        this._navigateToScreen('Login')
+    }*/
 
 }
 
@@ -153,21 +109,3 @@ const styles = StyleSheet.create({
         fontSize: 18,
     }
 })
-
-
-const App = StackNavigator(
-    {
-        Home: {screen: HomeScreen,},
-        /*WeChat: {screen: WeChatScreen},
-        Twitter: {screen: TwitterScreen},
-        OFO: {screen: OFOScreen},
-        QQBrowser: {screen: QQBrowserScreen},*/
-        Default1:{screen:DefaultScreen},
-    },
-    {
-        headerMode: 'none',
-    }
-);
-
-
-AppRegistry.registerComponent('demo', () => App);
