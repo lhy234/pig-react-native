@@ -10,10 +10,10 @@ import Toast from 'react-native-simple-toast';
 
 import {Colors, Images} from './resource/';
 
-import OFOScreen from './screens/ofo/OFOScreen';
-import TwitterScreen from './screens/twitter/TwitterScreen';
-import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
-import WeChatScreen from "./screens/wechat/WeChatScreen";
+//import OFOScreen from './screens/ofo/OFOScreen';
+//import TwitterScreen from './screens/twitter/TwitterScreen';
+//import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
+//import WeChatScreen from "./screens/wechat/WeChatScreen";
 import DefaultScreen from "./screens/default/DefaultScreen";
 
 class HomeScreen extends Component {
@@ -35,11 +35,11 @@ class HomeScreen extends Component {
                     </View>
                     <Text
                         style={{fontSize: 18, color: 'black'}}
-                    >Marno</Text>
+                    >braveliu</Text>
 
                 </View>
 
-                <TouchableWithoutFeedback onPress={this._navigateToWeChat.bind(this)}>
+                /*<TouchableWithoutFeedback onPress={this._navigateToWeChat.bind(this)}>
                     <View>
                         <Text
                             style={[styles.text_item, {backgroundColor: Colors.green_00C853}]}
@@ -71,7 +71,7 @@ class HomeScreen extends Component {
                             style={[styles.text_item, {backgroundColor: Colors.yellow_ffc962}]}
                         >OFO</Text>
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback>*/
 
                 <TouchableWithoutFeedback onPress={this._navigatorToDefault.bind(this)}>
                     <View>
@@ -100,7 +100,7 @@ class HomeScreen extends Component {
         navigate(screen);
     }
 
-    _navigateToOFO() {
+   /* _navigateToOFO() {
         this._navigateToScreen('OFO')
     }
 
@@ -114,7 +114,7 @@ class HomeScreen extends Component {
 
     _navigateToQQBrowser() {
         this._navigateToScreen('QQBrowser')
-    }
+    }*/
     _navigatorToDefault(){
         this._navigateToScreen('Default1')
     }
@@ -158,10 +158,10 @@ const styles = StyleSheet.create({
 const App = StackNavigator(
     {
         Home: {screen: HomeScreen,},
-        WeChat: {screen: WeChatScreen},
+        /*WeChat: {screen: WeChatScreen},
         Twitter: {screen: TwitterScreen},
         OFO: {screen: OFOScreen},
-        QQBrowser: {screen: QQBrowserScreen},
+        QQBrowser: {screen: QQBrowserScreen},*/
         Default1:{screen:DefaultScreen},
     },
     {
