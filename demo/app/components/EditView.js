@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import {LoginStyles} from '../resource/';
 
 export default class EditView extends Component {
   constructor(props) {
@@ -30,23 +31,3 @@ export default class EditView extends Component {
     );
   }
 }
-
-
-const LoginStyles = StyleSheet.create({
-  TextInputView: {
-    marginTop: 10,
-    height:50,
-    backgroundColor: '#ffffff',
-    borderRadius:5,
-    borderWidth:0.3,
-    borderColor:'#000000',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-
-  TextInput: {
-    backgroundColor: '#ffffff',
-    height:45,
-    margin:18,
-  },
-});

@@ -8,6 +8,7 @@ const images = {
      * Common
      */
     ic_first: require('./imgs/login.jpg'),
+    ic_login: require('./imgs/login.jpg'),
     ic_avatar: require('./imgs/avatar.jpg'),
     ic_back: require('./imgs/back.png'),
 
