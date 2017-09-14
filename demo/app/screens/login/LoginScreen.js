@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
-import {Images} from '../../resource/';
+import {Images, LoginStyles} from '../../resource/';
 import {EditView, LoginButton, NetUtil, LoginSuccess} from '../../components/';
 
 export default class LoginScreen extends Component {
@@ -24,20 +24,22 @@ export default class LoginScreen extends Component {
       return (
 
                   <View style={LoginStyles.loginview}>
-                    <View style={{flexDirection: 'row',height:100,marginTop:1,
-                       justifyContent: 'center',
-                       alignItems: 'flex-start',}}>
-                      <Image source={Images.ic_login}/>
+                    <View style={LoginStyles.topimg}>
+                      <Image source={Images.ic_login} style={LoginStyles.img}/>
                     </View>
-                    <View style={{marginTop:80}}>
-                      <EditView  name='输入用户名/注册手机号' onChangeText={(text) => {
+                    <View style={LoginStyles.toptext}>
+                         <Text>最专业的养猪APP</Text>
+                    </View>
+                    <View style={LoginStyles.user}>
+                      <EditView  name='手机号' onChangeText={(text) => {
                            this.userName = text;
                        }}/>
-                      <EditView name='输入密码' onChangeText={(text) => {
+                      <EditView name='请输入登陆密码' onChangeText={(text) => {
                            this.password = text;
                        }}/>
-                       <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
-                       <Text style={{color:"#4A90E2",textAlign:'center',marginTop:10}} >忘记密码？</Text>
+                       <View style={LoginStyles.btn}>
+                      <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
+                      </View>
                     </View>
                   </View>
       )
@@ -69,11 +71,3 @@ export default class LoginScreen extends Component {
    }
 
 }
-
-const LoginStyles = StyleSheet.create({
-  loginview: {
-    flex: 1,
-    padding: 30,
-    backgroundColor: '#ffffff',
-  },
-});

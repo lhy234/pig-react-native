@@ -8,5 +8,6 @@ import Colors from './Colors'
 import Images from './Images'
 import CommonStyles from './CommonStyles';
 import Constants from './Constants';
+import LoginStyles from './LoginStyles';
 
-export {Colors, Images, CommonStyles,Constants}
+export {Colors, Images, CommonStyles,Constants, LoginStyles}

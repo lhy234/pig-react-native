@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import {LoginStyles} from '../resource/';
 
 export default class LoginButton extends Component {
   constructor(props) {
@@ -25,20 +26,3 @@ export default class LoginButton extends Component {
     );
   }
 }
-const LoginStyles = StyleSheet.create({
-
-  loginText: {
-    color: '#ffffff',
-     fontWeight: 'bold',
-     width:30,
-  },
-  loginTextView: {
-    marginTop: 10,
-    height:50,
-    backgroundColor: '#3281DD',
-    borderRadius:5,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems:'center',
-  },
-});
