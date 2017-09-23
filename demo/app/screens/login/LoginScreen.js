@@ -9,6 +9,8 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+//import CookieManager from 'react-native-cookies';
+import Cookie from 'react-native-cookie';
 import {Images, LoginStyles} from '../../resource/';
 import {EditView, LoginButton, NetUtil, LoginSuccess} from '../../components/';
 
@@ -37,8 +39,8 @@ export default class LoginScreen extends Component {
                       <EditView name='请输入登陆密码' onChangeText={(text) => {
                            this.password = text;
                        }}/>
-                       <View style={LoginStyles.btn}>
-                      <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
+                       <View style={LoginStyles.btnView}>
+                      <LoginButton name='登录' onPressCallback={this.onPressCallback} style={LoginStyles.btn}/>
                       </View>
                     </View>
                   </View>
@@ -47,27 +49,73 @@ export default class LoginScreen extends Component {
 
 
   onPressCallback = () => {
-    let formData = new FormData();
-    formData.append("loginName",this.userName);
-    formData.append("pwd",this.password);
-    let url = "http://www.baidu.com";
-    NetUtil.postJson(url,formData,(responseText) => {
+    //let formData = new FormData();
+    var req  =
+        {
+        'platform':'telephone',
+        'telephone': this.userName,
+        'pwd': this.password
+        }
+
+   // alert(JSON.stringify(req))
+    //formData.append('req', req)
+//    formData.append('platform','local')
+//    formData.append('phoneNum': this.userName)
+//    //formData.append("loginName",this.userName);
+//    formData.append("pwd",this.password);
+    let url = "http://syhlife.com:8020/selftaught/login";
+    NetUtil.postJson(url,JSON.stringify(req),(responseText) => {
           alert(responseText);
-          this.onLoginSuccess();
+          response = JSON.parse(responseText)
+          if(response['retcode'] == '0'){
+             this.onLoginSuccess(response);
+          }else{
+           this.onLoginFailed(response);
+          }
     })
 
 
   };
 
-  //跳转到第二个页面去
-    onLoginSuccess(){
-     const { navigator } = this.props;
-     if (navigator) {
-       navigator.push({
-         name : 'LoginSuccess',
-         component : LoginSuccess,
-       });
-     }
+   _navigateToScreen(screen) {
+             //Toast.show(screen)
+             const {navigate} = this.props.navigation;
+             navigate(screen);
    }
+  //跳转到第二个页面去
+    onLoginSuccess(response){
+    Cookie.set('http://syhlife.com/', 'token',response['token'], {
+        path: '/',
+        expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
+        domain: 'syhlife.com'
+    }).then(() => console.log('success'));
+    Cookie.set('http://syhlife.com/', 'usertype',response['token'], {
+            path: '/',
+            expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
+            domain: 'syhlife.com'
+    }).then(() => console.log('success'));
+    Cookie.set('http://syhlife.com/', 'userid',response['user']['id'], {
+            path: '/',
+            expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
+            domain: 'syhlife.com'
+        }).then(() => console.log('success'));
+     // var cookie = 'user_session='+ response['user']['id'] +'; path=/; token='+ response['token'] + '; expires=Thu, 1 Jan 2030 00:00:00 -0000; secure; HttpOnly';
+//      CookieManager.setFromResponse(
+//        'http://syhlife.com/',
+//        cookie
+//        )
+//          .then((res) => {
+//            // `res` will be true or false depending on success.
+//            console.log('CookieManager.setFromResponse =>', res);
+//          });
+
+     this._navigateToScreen('Home')
+   }
+
+   //不跳转页面
+       onLoginFailed(){
+        alert(response['retdesc']);
+        this._navigateToScreen('Home')
+      }
 
 }

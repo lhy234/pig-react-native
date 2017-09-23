@@ -6,6 +6,7 @@ import {
   Text,
   View,
   Image,
+  KeyboardAvoidingView,
   TextInput,
   TouchableOpacity
 } from 'react-native';
@@ -20,6 +21,7 @@ export default class EditView extends Component {
   render() {
     return (
       <View style={LoginStyles.TextInputView}>
+       <KeyboardAvoidingView behavior="padding" style={styles.container}>
        <TextInput style={LoginStyles.TextInput}
          placeholder={this.props.name}
          onChangeText={(text) => {
@@ -27,7 +29,14 @@ export default class EditView extends Component {
              this.props.onChangeText(text);
            }
         }></TextInput>
+       </KeyboardAvoidingView>
        </View>
     );
   }
 }
+const styles = StyleSheet.create({
+   container: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  }
+});

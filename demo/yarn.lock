@@ -2971,6 +2971,12 @@ react-native-simple-toast@0.0.5:
   version "0.0.5"
   resolved "http://registry.npm.taobao.org/react-native-simple-toast/download/react-native-simple-toast-0.0.5.tgz#8530a9d0696613ad25bc5d4283f1e3c541ec2bc4"
 
+react-native-swiper@^1.5.12:
+  version "1.5.12"
+  resolved "http://registry.npm.taobao.org/react-native-swiper/download/react-native-swiper-1.5.12.tgz#fe040e19d936304013f1671dd83f7e25ee3c4d83"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-tab-view@^0.0.67:
   version "0.0.67"
   resolved "http://registry.npm.taobao.org/react-native-tab-view/download/react-native-tab-view-0.0.67.tgz#cdd146fe5e5d4baff6c89f2d5d0b15fa23db39d0"
@@ -3087,7 +3093,7 @@ react-test-renderer@16.0.0-alpha.6:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-timer-mixin@^0.13.2:
+react-timer-mixin@^0.13.2, react-timer-mixin@^0.13.3:
   version "0.13.3"
   resolved "http://registry.npm.taobao.org/react-timer-mixin/download/react-timer-mixin-0.13.3.tgz#0da8b9f807ec07dc3e854d082c737c65605b3d22"
 

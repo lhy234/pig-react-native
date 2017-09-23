@@ -10,5 +10,6 @@ import EditView from './EditView'
 import LoginButton from './LoginButton';
 import LoginSuccess from './LoginSuccess';
 import NetUtil from './NetUtil';
+import SwiperView from './SwiperView';
 
-export {EditView, ImageButton, LoginButton, LoginSuccess, NetUtil, TitleBar}
+export {EditView, ImageButton, LoginButton, LoginSuccess, NetUtil, TitleBar, SwiperView}

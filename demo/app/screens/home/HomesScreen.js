@@ -4,36 +4,34 @@ import {StackNavigator} from 'react-navigation';
 import Toast from 'react-native-simple-toast';
 
 import {Colors, Images} from '../../resource/';
+import {SwiperView} from '../../components/';
 
-export default class HomeScreen extends Component {
+var initialArr = [
+       {
+         id: 1,
+         text: "签到"
+       },
+       {
+         id: 2,
+         text: "报修"
+       },
+     ];
+
+export default class HomesScreen extends Component {
     constructor(props) {
         super(props);
-        this._navigateToScreen = this._navigateToScreen.bind(this);
+        //this._navigateToScreen = this._navigateToScreen.bind(this);
     }
 
     render() {
-        return (
-            <View style={styles.view_container} onLayout={this._navigatorToLogin.bind(this)}>
-                <View style={styles.view_avatar_name_container}>
-                    <View style={styles.view_avatar_container}>
-                        <Image
-                            style={styles.image_avatar}
-                            source={Images.ic_avatar}
-                        />
-                    </View>
-                    <Text
-                        style={{fontSize: 18, color: 'black'}}
-                    >braveliu</Text>
 
+        return (
+            <View style={styles.view_container}>
+                <View style={styles.view_avatar_name_container}>
+                    <SwiperView />
                 </View>
 
-                <TouchableWithoutFeedback onPress={this._navigatorToDefault.bind(this)}>
-                    <View>
-                        <Text
-                            style={[styles.text_item, {backgroundColor: Colors.blue_00B0FF}]}
-                        >Default</Text>
-                    </View>
-                </TouchableWithoutFeedback>
+                {this.buttonsListArr}
 
                 <Text
                     style={{
@@ -75,7 +73,14 @@ export default class HomeScreen extends Component {
     /*_navigatorToLogin(){
         this._navigateToScreen('Login')
     }*/
-
+    buttonsListArr = initialArr.map(buttonInfo => (
+          <TouchableWithoutFeedback key={buttonInfo.id} name={buttonInfo.id} onPress={() => this._navigatorToDefault()}>
+             <View >
+               <Text
+                   style={[styles.text_item, {backgroundColor: Colors.blue_00B0FF}]}>{buttonInfo.text}</Text>
+               </View>
+           </TouchableWithoutFeedback>
+           )     );
 }
 
 const styles = StyleSheet.create({
@@ -88,6 +93,7 @@ const styles = StyleSheet.create({
         marginBottom: 12
     },
     view_avatar_name_container: {
+        height: 200,
         marginBottom: 32,
         marginTop: 32,
         alignItems: 'center'
