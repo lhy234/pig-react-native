@@ -4,11 +4,16 @@ let NetUtil = {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'multipart/form-data;boundary=6ff46e0b6b5148d984f148b6542e5a5d'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'module': '1',
+            'clientType': 'ios',
+            'version': '1.0.3',
+            'clientIp': '192.168.0.2',
+            'deviceId': '888',
           },
-          body:data
+          body: 'req=' + data
         };
-
+        alert(JSON.stringify(data))
         fetch(url, fetchOptions)
         .then((response) => response.text())
         .then((responseText) => {

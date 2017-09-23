@@ -9,16 +9,17 @@ import {StackNavigator} from 'react-navigation';
 import Toast from 'react-native-simple-toast';
 
 import {Colors, Images} from './resource/';
-import HomeScreen from "./screens/home/HomeScreen";
+import HomesScreen from "./screens/home/HomesScreen";
 import LoginScreen from "./screens/login/LoginScreen";
 //import OFOScreen from './screens/ofo/OFOScreen';
 //import TwitterScreen from './screens/twitter/TwitterScreen';
 //import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
 //import WeChatScreen from "./screens/wechat/WeChatScreen";
 import DefaultScreen from "./screens/default/DefaultScreen";
-import CookieManager from 'react-native-cookies';
+//import CookieManager from 'react-native-cookies';
+import Cookie from 'react-native-cookie';
 
-class FirstScreen extends Component {
+export default class FirstScreen extends Component {
 
   render() {
       return (
@@ -36,7 +37,7 @@ class FirstScreen extends Component {
           navigate(screen);
   }
   _navigatorToDefault(){
-      this._navigateToScreen('Default1')
+      this._navigateToScreen('Home')
   }
   _navigatorToLogin(){
       this._navigateToScreen('Login')
@@ -46,16 +47,18 @@ class FirstScreen extends Component {
         return true;
   }
   _redirectByLoginState(){
-      CookieManager.get('http://www.baidu.com')
+      Cookie.get('http://syhlife.com/', 'token')
         .then((res) => {
-          console.log('CookieManager.get =>', res); // => 'user_session=abcdefg; path=/;'
+          console.log('Cookiemanager', res); // => 'user_session=abcdefg; path=/;'
           var that = this;
           setTimeout(function(){
-            for(var n in res){
-               that._navigateToScreen('Default1');
-            }
+            if(res){
+               that._navigateToScreen('Home');
+            }else{
                that._navigateToScreen('Login');
-            }, 4000);
+            }
+
+            }, 2000);
         });
   }
 }
@@ -63,7 +66,7 @@ class FirstScreen extends Component {
 const App = StackNavigator(
     {
         First: {screen: FirstScreen},
-        Home: {screen: HomeScreen},
+        Home: {screen: HomesScreen},
         /*WeChat: {screen: WeChatScreen},
         Twitter: {screen: TwitterScreen},
         OFO: {screen: OFOScreen},

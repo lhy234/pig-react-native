@@ -12,7 +12,9 @@ const images = {
     ic_avatar: require('./imgs/avatar.jpg'),
     ic_back: require('./imgs/back.png'),
 
-
+    ic_logo: require('./imgs/logo.png'),
+    ic_logo2: require('./imgs/logo.png'),
+    ic_logpo3: require('./imgs/avatar.jpg'),
     /**
      * OFO
      */

@@ -55,10 +55,14 @@ const LoginStyles = StyleSheet.create({
                     alignItems:'center',
 
     },
-    btn: {
+    btnView: {
 
         flexDirection: 'column',
               alignItems: 'center'
+    },
+    btn: {
+       flexDirection: 'row',
+       justifyContent: 'center'
     }
 });
 export default LoginStyles;

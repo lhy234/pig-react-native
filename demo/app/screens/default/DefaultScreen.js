@@ -25,7 +25,7 @@ export default class DefaultScreen extends Component {
     _renderTitleBar(){
         return(
             <Text
-                style={{color:'white',textAlignVertical:'center', textAlign:'center',font:20,padding:12}}
+                style={{color:'white',textAlignVertical:'center', textAlign:'center',fontSize:20,padding:12}}
             >这里添加标题</Text>
         );
     }
@@ -33,7 +33,7 @@ export default class DefaultScreen extends Component {
     _renderMenu() {
         return (
             <Text
-                style={{color:'white',textAlignVertical:'center', textAlign:'center',font:20,padding:12}}
+                style={{color:'white',textAlignVertical:'center', textAlign:'center',fontSize:20,padding:12}}
             >这里添加底部菜单</Text>
         )
     }
