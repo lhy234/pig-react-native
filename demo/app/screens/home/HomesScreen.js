@@ -5,14 +5,15 @@ import Toast from 'react-native-simple-toast';
 
 import {Colors, Images} from '../../resource/';
 import {SwiperView} from '../../components/';
+import Cookie from 'react-native-cookie';
 
 var initialArr = [
        {
-         id: 1,
+         id: '01',
          text: "签到"
        },
        {
-         id: 2,
+         id: '10',
          text: "报修"
        },
      ];
@@ -31,7 +32,7 @@ export default class HomesScreen extends Component {
                     <SwiperView />
                 </View>
 
-                {this.buttonsListArr}
+                {this.buttonsListArr()}
 
                 <Text
                     style={{
@@ -73,14 +74,40 @@ export default class HomesScreen extends Component {
     /*_navigatorToLogin(){
         this._navigateToScreen('Login')
     }*/
-    buttonsListArr = initialArr.map(buttonInfo => (
-          <TouchableWithoutFeedback key={buttonInfo.id} name={buttonInfo.id} onPress={() => this._navigatorToDefault()}>
-             <View >
-               <Text
-                   style={[styles.text_item, {backgroundColor: Colors.blue_00B0FF}]}>{buttonInfo.text}</Text>
-               </View>
-           </TouchableWithoutFeedback>
-           )     );
+    buttonsListArr(){
+      Cookie.get('http://syhlife.com/', 'usertype').then((cookie) => {
+           console.log(cookie);
+           let arr = [];
+           for(var i in cookie){
+              arr.push(cookie[i]);
+           }
+           console.log(arr)
+           console.log(arr.length)
+           console.log(initialArr.length)
+           if(arr.length !== initialArr.length){
+                let newArr = []
+                for(var j in arr){
+                    for(var k in initialArr){
+                        if (arr[j] === initialArr[k]['id']){
+                            newArr.push(initialArr[k])
+                        }
+                    }
+                }
+                initialArr = newArr
+                console.log(initialArr)
+           }
+           return initialArr.map(buttonInfo => (
+                      <TouchableWithoutFeedback key={buttonInfo.id} name={buttonInfo.id} onPress={() => this._navigatorToDefault()}>
+                        <View >
+                          <Text
+                              style={[styles.text_item, {backgroundColor: Colors.blue_00B0FF}]}>{buttonInfo.text}</Text>
+                          </View>
+                      </TouchableWithoutFeedback>
+                      )     );
+         }
+      );
+
+    }
 }
 
 const styles = StyleSheet.create({

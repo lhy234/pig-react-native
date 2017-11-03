@@ -4,6 +4,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  ScrollView,
   View,
   Image,
   TextInput,
@@ -24,7 +25,13 @@ export default class LoginScreen extends Component {
 
   render() {
       return (
-
+                <ScrollView
+                        contentContainerStyle={{ flex: 1 }} // 非常重要，让ScrollView的子元素占满整个区域
+                        keyboardDismissMode="on-drag" // 拖动界面输入法退出
+                        keyboardShouldPersistTaps="never" // 点击输入法以外的区域，输入法退出 不加这两句也可以实现点击空白处收回键盘
+                        scrollEnabled={true} // 当值为false的时候，内容不能滚动，默认值为true
+                      >
+                  <View style={{ flex:1,justifyContent: 'center' }}>
                   <View style={LoginStyles.loginview}>
                     <View style={LoginStyles.topimg}>
                       <Image source={Images.ic_login} style={LoginStyles.img}/>
@@ -44,6 +51,8 @@ export default class LoginScreen extends Component {
                       </View>
                     </View>
                   </View>
+                  </View>
+                 </ScrollView>
       )
   }
 
@@ -88,17 +97,17 @@ export default class LoginScreen extends Component {
         path: '/',
         expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
         domain: 'syhlife.com'
-    }).then(() => console.log('success'));
-    Cookie.set('http://syhlife.com/', 'usertype',response['token'], {
+    }).then(() => alert('success'));
+    Cookie.set('http://syhlife.com/', 'usertype',response['user']['userType'], {
             path: '/',
             expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
             domain: 'syhlife.com'
-    }).then(() => console.log('success'));
+    }).then((cookie) => alert('success', cookie));
     Cookie.set('http://syhlife.com/', 'userid',response['user']['id'], {
             path: '/',
             expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
             domain: 'syhlife.com'
-        }).then(() => console.log('success'));
+        }).then(() => alert('success'));
      // var cookie = 'user_session='+ response['user']['id'] +'; path=/; token='+ response['token'] + '; expires=Thu, 1 Jan 2030 00:00:00 -0000; secure; HttpOnly';
 //      CookieManager.setFromResponse(
 //        'http://syhlife.com/',
