@@ -47,7 +47,7 @@ export default class FirstScreen extends Component {
         return true;
   }
   _redirectByLoginState(){
-      Cookie.get('http://syhlife.com/', 'token')
+      Cookie.get('http://syhlife.com/', 'usertype')
         .then((res) => {
           console.log('Cookiemanager', res); // => 'user_session=abcdefg; path=/;'
           var that = this;
