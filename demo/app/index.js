@@ -11,12 +11,13 @@ import Toast from 'react-native-simple-toast';
 import {Colors, Images} from './resource/';
 import HomesScreen from "./screens/home/HomesScreen";
 import LoginScreen from "./screens/login/LoginScreen";
+import SignScreen from "./screens/sign/SignScreen";
+import RepairRecordScreen from "./screens/repairrecord/RepairRecordScreen";
 //import OFOScreen from './screens/ofo/OFOScreen';
 //import TwitterScreen from './screens/twitter/TwitterScreen';
 //import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
 //import WeChatScreen from "./screens/wechat/WeChatScreen";
 import DefaultScreen from "./screens/default/DefaultScreen";
-//import CookieManager from 'react-native-cookies';
 import Cookie from 'react-native-cookie';
 
 export default class FirstScreen extends Component {
@@ -67,6 +68,8 @@ const App = StackNavigator(
     {
         First: {screen: FirstScreen},
         Home: {screen: HomesScreen},
+        Sign: {screen: SignScreen},
+        RepairRecord: {screen: RepairRecordScreen},
         /*WeChat: {screen: WeChatScreen},
         Twitter: {screen: TwitterScreen},
         OFO: {screen: OFOScreen},

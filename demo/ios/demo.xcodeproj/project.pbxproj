@@ -276,7 +276,6 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		994A55DA306A4F448D64BC14 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		F777CCE197AE4762BB7FFD8E /* libLRDRCTSimpleToast.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLRDRCTSimpleToast.a; sourceTree = "<group>"; };
-		2C054C86A22D41B694AF333B /* RNCookieManagerIOS.xcodeproj */ = {isa = PBXFileReference; name = "RNCookieManagerIOS.xcodeproj"; path = "../node_modules/react-native-cookies/ios/RNCookieManagerIOS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		E2E36C2BCCB5438BA8EE36C8 /* libRNCookieManagerIOS.a */ = {isa = PBXFileReference; name = "libRNCookieManagerIOS.a"; path = "libRNCookieManagerIOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		20900E0658274343BD9DD7E3 /* RNCookieManager.xcodeproj */ = {isa = PBXFileReference; name = "RNCookieManager.xcodeproj"; path = "../node_modules/react-native-cookie/ios/RNCookieManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B3B2713FB7634DED9E184580 /* libRNCookieManager.a */ = {isa = PBXFileReference; name = "libRNCookieManager.a"; path = "libRNCookieManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
@@ -1044,7 +1043,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = demoTests/Info.plist;
@@ -1076,7 +1074,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = demoTests/Info.plist;
@@ -1112,7 +1109,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
@@ -1141,7 +1137,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
@@ -1174,7 +1169,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = "demo-tvOS/Info.plist";
@@ -1214,7 +1208,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
-					"$(SRCROOT)\..\node_modules\react-native-cookies\ios\RNCookieManagerIOS",
 					"$(SRCROOT)\..\node_modules\react-native-cookie\ios",
 				);
 				INFOPLIST_FILE = "demo-tvOS/Info.plist";
