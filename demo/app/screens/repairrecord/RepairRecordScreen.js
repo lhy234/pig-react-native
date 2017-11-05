@@ -4,98 +4,116 @@
  * Desc:
  */
 import React, {Component} from "react";
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Text, StyleSheet, Button, TouchableOpacity, FlatList, Dimensions} from "react-native";
 import Toast from 'react-native-simple-toast';
-import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button'
 import { RadioButtons } from 'react-native-radio-buttons'
 import MultipleChoice from 'react-native-multiple-choice'
 
+const {width,height}=Dimensions.get('window')
 export default class RepairRecordScreen extends Component {
-    constructor(){
-             super()
-             this.state = {
-                 text: '',
-                 selectedArr: []
-             }
-             this.onSelect = this.onSelect.bind(this)
-         }
+   // 构造
+       constructor(props) {
+           super(props);
+       }
+       refreshing(){
+           let timer =  setTimeout(()=>{
+                       clearTimeout(timer)
+                       alert('刷新成功')
+                   },1500)
+       }
+       _onload(){
+           let timer =  setTimeout(()=>{
+               clearTimeout(timer)
+               alert('加载成功')
+           },1500)
+       }
+       render() {
+           var data = [];
+           for (var i = 0; i < 100; i++) {
+               data.push({key: i, title: i + ''});
+           }
 
-         onSelect(value){
-             var arr = this.state['selectedArr'];
-             var removeArr = [];
-             var insertArr = arr;
-             for(var a in arr){
-                if (a.substring(0,4)===value.substring(0,4)){
-                   removeArr.push(a);
-                }
-             }
-             if(removeArr.length === 0){
-                insertArr.push(value);
-             }
-             for (var b in removeArr){
-                if(insertArr[b]){
-                    delete insertArr[b];
-                }
-             }
-             this.setState({
-             text: `Selected index: value: ${insertArr.join(',')}`,
-             selectedArr: insertArr
-             })
-         }
-         onPressCallback(){
-            alert('wcnm');
-         }
-         tick(option){
-                return option;
-         }
-         append0(num){
-            if(num < 10){
-                return '0'+ num;
-            }
-            return num;
-         }
-         getDate(){
-            var dd = new Date();
-            var year = dd.getFullYear();
-            var month = this.append0(dd.getMonth()+1);
-            var day = this.append0(dd.getDate());
-            var hour = this.append0(dd.getHours());
-            var min = this.append0(dd.getMinutes());
-            return year + '-'+month + '-'+ day +" " + hour +":"+ min;
-         }
-    render() {
-        const list =  [
-                      "张三"+ '        '+this.getDate(),
-                      "刘晓勇"+ '        '+this.getDate(),
-                      "苏绍强"+ '        '+this.getDate()
-                      ];
+           return (
+               <View style={{flex:1}}>
+                   <Button title='滚动到指定位置' onPress={()=>{
+                       this._flatList.scrollToOffset({animated: true, offset: 2000});
+                   }}/>
+                   <View style={{flex:1}}>
+                       <FlatList
+                           ref={(flatList)=>this._flatList = flatList}
+                           ListHeaderComponent={this._header}
+                           ListFooterComponent={this._footer}
+                           ItemSeparatorComponent={this._separator}
+                           renderItem={this._renderItem}
+                           onRefresh={this.refreshing}
+                           refreshing={false}
+                           onEndReachedThreshold={0}
+                           onEndReached={
+                               this._onload
+                           }
+                           numColumns ={1}
+                           //columnWrapperStyle={{borderWidth:2,borderColor:'black',paddingLeft:20}}
 
-          return (
-            <View style={{margin: 20}}>
-               <MultipleChoice
-                                  options={list}
-                                  selectedOptions={[]}
-                                  maxSelectedOptions={5}
-                                  renderIndicator={(option)=>this.tick(option)}
-                                  onSelection={(option)=>this.onSelect( option)}
-                              />
-              <Text>Selected option: {this.state.text || 'none'}</Text>
-              <TouchableOpacity onPress={this.onPressCallback}>
-                <Text>
-                    {'签到'}
-                </Text>
-              </TouchableOpacity>
-            </View>);
-    }
+                           //horizontal={true}
 
-}
-let styles = StyleSheet.create({
-    container: {
-        marginTop: 40,
-        padding: 20
-    },
-    text: {
-        padding: 10,
-        fontSize: 14,
-    },
-})
+                           getItemLayout={(data,index)=>(
+                           {length: 100, offset: (100+2) * index, index}
+                           )}
+
+                           data={data}>
+                       </FlatList>
+                   </View>
+
+               </View>
+           );
+       }
+
+
+       _renderItem = (item) => {
+           var txt = '第' + item.index + '个' + ' title=' + item.item.title;
+           var bgColor = item.index % 2 == 0 ? 'red' : 'blue';
+           return <Text style={[{flex:1,height:100,backgroundColor:bgColor},styles.txt]}>{txt}</Text>
+       }
+
+       _header = () => {
+           return <Text style={[styles.txt,{backgroundColor:'black'}]}>这是头部</Text>;
+       }
+
+       _footer = () => {
+           return <Text style={[styles.txt,{backgroundColor:'black'}]}>这是尾部</Text>;
+       }
+
+       _separator = () => {
+           return <View style={{height:2,backgroundColor:'yellow'}}/>;
+       }
+
+
+   }
+   const styles=StyleSheet.create({
+       container:{
+
+       },
+       content:{
+           width:width,
+           height:height,
+           backgroundColor:'yellow',
+           justifyContent:'center',
+           alignItems:'center'
+       },
+       cell:{
+           height:100,
+           backgroundColor:'purple',
+           alignItems:'center',
+           justifyContent:'center',
+           borderBottomColor:'#ececec',
+           borderBottomWidth:1
+
+       },
+       txt: {
+           textAlign: 'center',
+           textAlignVertical: 'center',
+           color: 'white',
+           fontSize: 30,
+       }
+
+   })

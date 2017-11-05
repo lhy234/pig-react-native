@@ -6,17 +6,18 @@
 import React, {Component} from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import Toast from 'react-native-simple-toast';
-import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button'
 import { RadioButtons } from 'react-native-radio-buttons'
 import MultipleChoice from 'react-native-multiple-choice'
 
 export default class SignScreen extends Component {
-    constructor(){
-             super()
+    constructor(props){
+             super(props);
              this.state = {
                  text: '',
                  selectedArr: []
              }
+             this.location = this.props.navigation.state.params.locationInfo;
+             this.userlist = this.props.navigation.state.params.signUserList;
              this.onSelect = this.onSelect.bind(this)
          }
 
@@ -85,6 +86,8 @@ export default class SignScreen extends Component {
                     {'签到'}
                 </Text>
               </TouchableOpacity>
+              <Text>{this.userlist}</Text>
+              <Text>{this.location}</Text>
             </View>);
     }
 

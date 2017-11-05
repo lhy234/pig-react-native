@@ -4,12 +4,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  ScrollView,
   View,
   Image,
   TextInput,
   TouchableOpacity
 } from 'react-native';
-//import CookieManager from 'react-native-cookies';
 import Cookie from 'react-native-cookie';
 import {Images, LoginStyles} from '../../resource/';
 import {EditView, LoginButton, NetUtil, LoginSuccess} from '../../components/';
@@ -24,7 +24,6 @@ export default class LoginScreen extends Component {
 
   render() {
       return (
-
                   <View style={LoginStyles.loginview}>
                     <View style={LoginStyles.topimg}>
                       <Image source={Images.ic_login} style={LoginStyles.img}/>
@@ -63,8 +62,8 @@ export default class LoginScreen extends Component {
 //    formData.append('phoneNum': this.userName)
 //    //formData.append("loginName",this.userName);
 //    formData.append("pwd",this.password);
-    let url = "http://syhlife.com:8020/selftaught/login";
-    NetUtil.postJson(url,JSON.stringify(req),(responseText) => {
+    let url = "http://syhlife.com:8020/pig/login";
+    NetUtil.postJson(url,JSON.stringify(req), false, (responseText) => {
           alert(responseText);
           response = JSON.parse(responseText)
           if(response['retcode'] == '0'){
@@ -89,7 +88,7 @@ export default class LoginScreen extends Component {
         expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
         domain: 'syhlife.com'
     }).then(() => console.log('success'));
-    Cookie.set('http://syhlife.com/', 'usertype',response['token'], {
+    Cookie.set('http://syhlife.com/', 'usertype',response['userType'], {
             path: '/',
             expires: new Date('Thu, 1 Jan 2030 00:00:00 GMT'),
             domain: 'syhlife.com'

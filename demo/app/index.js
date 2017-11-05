@@ -18,7 +18,6 @@ import RepairRecordScreen from "./screens/repairrecord/RepairRecordScreen";
 //import QQBrowserScreen from "./screens/qqbrowser/QQBrowserScreen";
 //import WeChatScreen from "./screens/wechat/WeChatScreen";
 import DefaultScreen from "./screens/default/DefaultScreen";
-//import CookieManager from 'react-native-cookies';
 import Cookie from 'react-native-cookie';
 
 export default class FirstScreen extends Component {
@@ -57,7 +56,7 @@ export default class FirstScreen extends Component {
             if(res){
                that._navigateToScreen('Home');
             }else{
-               that._navigateToScreen('RepairRecord');
+               that._navigateToScreen('Login');
             }
 
             }, 2000);
